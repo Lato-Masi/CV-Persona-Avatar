@@ -1,0 +1,6 @@
+{
+  "name": "Executive CV Profiler & Web Intelligence",
+  "description": "Upload PDF CVs or resumes, convert them to Markdown, enrich candidate history via verified web search, and generate formatted Markdown executive reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
