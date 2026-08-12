@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
+import { LandingPage } from './components/LandingPage';
 import { CvUploadForm } from './components/CvUploadForm';
 import { FormattedMarkdownReport } from './components/FormattedMarkdownReport';
 import { ProfileHeaderCard } from './components/ProfileHeaderCard';
@@ -23,6 +24,7 @@ import { Sparkles, AlertCircle, RefreshCw, FileText, LayoutDashboard, UploadClou
 const LOCAL_STORAGE_KEY = 'linkedin_profile_summaries_v2';
 
 export default function App() {
+  const [activeView, setActiveView] = useState<'landing' | 'app'>('landing');
   const [activeAnalysis, setActiveAnalysis] = useState<ProfileAnalysisResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState('');
@@ -134,6 +136,7 @@ export default function App() {
   };
 
   const handleAnalyzeCv = async (formData: FormData) => {
+    setActiveView('app');
     setIsLoading(true);
     setError(null);
     setLoadingStep('Extracting PDF CV text & converting to Markdown...');
@@ -218,19 +221,24 @@ export default function App() {
         onToggleCompare={() => setCompareMode(!compareMode)}
         activeProfileName={activeAnalysis?.profile.name}
         onOpenApiKeyModal={() => setIsApiKeyModalOpen(true)}
+        activeView={activeView}
+        onSelectView={setActiveView}
       />
 
-      {/* Main Content Area */}
-      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* CV Upload & Web Research Form */}
-        <section>
-          <CvUploadForm
-            onAnalyzeCv={handleAnalyzeCv}
-            onAnalyzeRequest={handleAnalyzeRequest}
-            isLoading={isLoading}
-            onOpenAnydocConverter={() => setIsAnydocConverterOpen(true)}
-          />
-        </section>
+      {/* Main Content Area OR Landing Page */}
+      {activeView === 'landing' ? (
+        <LandingPage onEnterApp={() => setActiveView('app')} />
+      ) : (
+        <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+          {/* CV Upload & Web Research Form */}
+          <section>
+            <CvUploadForm
+              onAnalyzeCv={handleAnalyzeCv}
+              onAnalyzeRequest={handleAnalyzeRequest}
+              isLoading={isLoading}
+              onOpenAnydocConverter={() => setIsAnydocConverterOpen(true)}
+            />
+          </section>
 
         {/* Loading State */}
         {isLoading && (
@@ -377,7 +385,8 @@ export default function App() {
             )}
           </section>
         )}
-      </main>
+        </main>
+      )}
 
       {/* Anydoc WASM Document Converter Modal */}
       {isAnydocConverterOpen && (
@@ -403,6 +412,7 @@ export default function App() {
           history={history}
           onSelectResult={(res) => {
             setActiveAnalysis(res);
+            setActiveView('app');
             setIsHistoryOpen(false);
           }}
           onClearHistory={handleClearHistory}

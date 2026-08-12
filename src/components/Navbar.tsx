@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, History, Scale, Key } from 'lucide-react';
+import { Linkedin, History, Scale, Key, Home, Cpu } from 'lucide-react';
 import { getByokApiKey } from '../utils/apiKey';
 
 interface NavbarProps {
@@ -9,6 +9,8 @@ interface NavbarProps {
   onToggleCompare: () => void;
   activeProfileName?: string;
   onOpenApiKeyModal: () => void;
+  activeView: 'landing' | 'app';
+  onSelectView: (view: 'landing' | 'app') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -17,31 +19,72 @@ export const Navbar: React.FC<NavbarProps> = ({
   compareMode,
   onToggleCompare,
   onOpenApiKeyModal,
+  activeView,
+  onSelectView,
 }) => {
   const hasCustomKey = Boolean(getByokApiKey());
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/70 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20 text-white">
+    <header className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand */}
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
-            <Linkedin className="w-5 h-5" />
-          </div>
-          <div>
-            <div className="flex items-center space-x-2">
-              <span className="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-300">
-                PersonaScan AI
-              </span>
+        {/* Brand Logo & View Switcher */}
+        <div className="flex items-center space-x-4">
+          <button
+            onClick={() => onSelectView('landing')}
+            className="flex items-center space-x-3 text-left focus:outline-none group"
+            title="Return to Overview & Guide"
+          >
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+              <Linkedin className="w-5 h-5" />
             </div>
-            <p className="text-xs text-slate-400 hidden sm:block">
-              Executive Profiler & Web Intelligence Search Engine
-            </p>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-300">
+                  PersonaScan AI
+                </span>
+              </div>
+              <p className="text-xs text-slate-400 hidden sm:block">
+                Executive Profiler & Web Intelligence Engine
+              </p>
+            </div>
+          </button>
+
+          {/* Navigation Tabs */}
+          <div className="hidden lg:flex items-center space-x-1 p-1 bg-slate-950/60 rounded-xl border border-white/10 ml-4">
+            <button
+              onClick={() => onSelectView('landing')}
+              className={`flex items-center space-x-1.5 px-3 py-1 text-xs font-semibold rounded-lg transition ${
+                activeView === 'landing'
+                  ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Home className="w-3.5 h-3.5" />
+              <span>Overview & Guide</span>
+            </button>
+            <button
+              onClick={() => onSelectView('app')}
+              className={`flex items-center space-x-1.5 px-3 py-1 text-xs font-semibold rounded-lg transition ${
+                activeView === 'app'
+                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Cpu className="w-3.5 h-3.5" />
+              <span>Profiler Workspace</span>
+            </button>
           </div>
         </div>
 
         {/* Right Action Bar */}
         <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* Mobile View Switcher */}
+          <button
+            onClick={() => onSelectView(activeView === 'landing' ? 'app' : 'landing')}
+            className="lg:hidden flex items-center space-x-1 px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-indigo-500/10 text-indigo-300 border border-indigo-500/30"
+          >
+            {activeView === 'landing' ? 'Launch App' : 'Guide'}
+          </button>
 
           {/* BYOK API Key Button */}
           <button
@@ -63,7 +106,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Compare Toggle Button */}
           <button
             id="compare-mode-toggle-btn"
-            onClick={onToggleCompare}
+            onClick={() => {
+              if (activeView !== 'app') onSelectView('app');
+              onToggleCompare();
+            }}
             className={`inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium rounded-xl border backdrop-blur-md transition-all ${
               compareMode
                 ? 'bg-gradient-to-r from-indigo-500 to-emerald-500 text-white border-white/20 shadow-lg shadow-indigo-500/25'
@@ -93,4 +139,5 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
+
 
