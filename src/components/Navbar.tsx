@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-300">
-                  PersonaScan AI
+                  CV Persona Avatar
                 </span>
               </div>
               <p className="text-xs text-slate-400 hidden sm:block">

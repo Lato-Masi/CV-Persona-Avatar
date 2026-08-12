@@ -55,7 +55,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             </div>
             <div>
               <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-300">
-                PersonaScan AI
+                CV Persona Avatar
               </span>
               <span className="ml-2 px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
                 Executive Edition
@@ -96,7 +96,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
-            PersonaScan AI combines deep document parsing, real-time Google Web grounding, psychological speculation, and interactive avatar simulations to evaluate executive talent with unprecedented speed and depth.
+            CV Persona Avatar combines deep document parsing, real-time Google Web grounding, psychological speculation, and interactive avatar simulations to evaluate executive talent with unprecedented speed and depth.
           </p>
 
           {/* Action Call To Actions */}
@@ -146,7 +146,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             <span className="text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
               Core Overview
             </span>
-            <h2 className="text-3xl font-extrabold text-white">What is PersonaScan AI?</h2>
+            <h2 className="text-3xl font-extrabold text-white">What is CV Persona Avatar?</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-sm">
               An all-in-one Executive Profiling and Web Intelligence Engine that transforms static resume documents into structured, multi-dimensional executive intelligence reports.
             </p>
@@ -191,7 +191,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
               Target Audience
             </span>
-            <h2 className="text-3xl font-extrabold text-white">Who is PersonaScan AI For?</h2>
+            <h2 className="text-3xl font-extrabold text-white">Who is CV Persona Avatar For?</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-sm">
               Designed specifically for professionals who make critical talent, investment, and executive placement decisions.
             </p>
@@ -246,7 +246,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             <span className="text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
               The Mission
             </span>
-            <h2 className="text-3xl font-black text-white">Why Was PersonaScan AI Created?</h2>
+            <h2 className="text-3xl font-black text-white">Why Was CV Persona Avatar Created?</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -266,10 +266,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
 
             <div className="bg-emerald-500/10 border border-emerald-500/20 p-6 rounded-2xl space-y-3">
               <div className="text-emerald-400 font-bold text-sm uppercase tracking-wider flex items-center gap-2">
-                <span>✅ The PersonaScan Solution</span>
+                <span>✅ The CV Persona Avatar Solution</span>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                PersonaScan AI synthesizes multi-modal candidate inputs into a living, interactive avatar model. It grounds candidate accomplishments in real-time web search results and lets recruiters simulate real crisis interviews in a sandbox before making high-stakes decisions.
+                CV Persona Avatar synthesizes multi-modal candidate inputs into a living, interactive avatar model. It grounds candidate accomplishments in real-time web search results and lets recruiters simulate real crisis interviews in a sandbox before making high-stakes decisions.
               </p>
               <ul className="text-xs text-slate-300 space-y-2 pt-2">
                 <li className="flex items-center gap-2 text-emerald-300"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Deep psychological & leadership style speculation.</li>
@@ -286,7 +286,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             <span className="text-xs font-bold uppercase tracking-widest text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">
               Key Timings
             </span>
-            <h2 className="text-3xl font-extrabold text-white">When Should You Use PersonaScan AI?</h2>
+            <h2 className="text-3xl font-extrabold text-white">When Should You Use CV Persona Avatar?</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-sm">
               Integrates into every major milestone of the executive recruitment and talent evaluation lifecycle.
             </p>
@@ -325,7 +325,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             <span className="text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
               Process Workflow
             </span>
-            <h2 className="text-3xl font-extrabold text-white">How Does PersonaScan AI Work?</h2>
+            <h2 className="text-3xl font-extrabold text-white">How Does CV Persona Avatar Work?</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-sm">
               A seamless 5-step pipeline that transforms raw candidate information into comprehensive intelligence.
             </p>
@@ -512,7 +512,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
         <footer className="pt-12 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <div className="flex items-center space-x-2">
             <Sparkles className="w-4 h-4 text-indigo-400" />
-            <span className="font-semibold text-slate-200">PersonaScan AI</span>
+            <span className="font-semibold text-slate-200">CV Persona Avatar</span>
             <span>— Executive CV Profiler & Web Intelligence Search Engine</span>
           </div>
           <div>
