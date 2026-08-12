@@ -213,32 +213,33 @@ export default function App() {
         <div className="absolute top-[20%] right-[15%] w-[30%] h-[30%] bg-fuchsia-600/10 rounded-full blur-[100px]"></div>
       </div>
 
-      {/* Navigation Bar */}
-      <Navbar
-        onOpenHistory={() => setIsHistoryOpen(true)}
-        savedCount={history.length}
-        compareMode={compareMode}
-        onToggleCompare={() => setCompareMode(!compareMode)}
-        activeProfileName={activeAnalysis?.profile.name}
-        onOpenApiKeyModal={() => setIsApiKeyModalOpen(true)}
-        activeView={activeView}
-        onSelectView={setActiveView}
-      />
-
       {/* Main Content Area OR Landing Page */}
       {activeView === 'landing' ? (
         <LandingPage onEnterApp={() => setActiveView('app')} />
       ) : (
-        <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-          {/* CV Upload & Web Research Form */}
-          <section>
-            <CvUploadForm
-              onAnalyzeCv={handleAnalyzeCv}
-              onAnalyzeRequest={handleAnalyzeRequest}
-              isLoading={isLoading}
-              onOpenAnydocConverter={() => setIsAnydocConverterOpen(true)}
-            />
-          </section>
+        <>
+          {/* Application Navigation Bar */}
+          <Navbar
+            onOpenHistory={() => setIsHistoryOpen(true)}
+            savedCount={history.length}
+            compareMode={compareMode}
+            onToggleCompare={() => setCompareMode(!compareMode)}
+            activeProfileName={activeAnalysis?.profile.name}
+            onOpenApiKeyModal={() => setIsApiKeyModalOpen(true)}
+            activeView={activeView}
+            onSelectView={setActiveView}
+          />
+
+          <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            {/* CV Upload & Web Research Form */}
+            <section>
+              <CvUploadForm
+                onAnalyzeCv={handleAnalyzeCv}
+                onAnalyzeRequest={handleAnalyzeRequest}
+                isLoading={isLoading}
+                onOpenAnydocConverter={() => setIsAnydocConverterOpen(true)}
+              />
+            </section>
 
         {/* Loading State */}
         {isLoading && (
@@ -386,6 +387,7 @@ export default function App() {
           </section>
         )}
         </main>
+        </>
       )}
 
       {/* Anydoc WASM Document Converter Modal */}
